@@ -1,0 +1,117 @@
+# Offensive Security – Lab Guide
+> A beginner-friendly walkthrough for practicing enumeration and exploitation using a fake banking website.
+
+---
+
+## 📌 Overview
+This lab teaches:
+- How to use `gobuster` for directory discovery.
+- How to find and exploit a bank transfer page.
+- How to document your result.
+
+> ⚠️ **Disclaimer:**  
+> Use these steps only in authorized labs (like TryHackMe). Never run them against systems you don’t own or have explicit permission to test.
+
+---
+
+## 🧭 Step 1 — Understand the Scenario
+We have a target:  
+```
+
+[http://fakebank.thm](http://fakebank.thm)
+
+````
+
+Your mission:
+1. Enumerate hidden paths.
+2. Access the transfer page.
+3. Transfer **$2000** from account **2276** to your account **8881**.
+4. Confirm your new balance.
+
+---
+
+## 🔍 Step 2 — Directory Enumeration
+Use [Gobuster](https://github.com/OJ/gobuster) to find directories.
+
+```bash
+gobuster dir -u http://fakebank/ -w wordlist.txt
+````
+
+✅ **Expected findings:**
+
+```
+/images
+/bank-transfer
+```
+
+---
+
+## 💰 Step 3 — Exploit the Bank Transfer Page
+
+Navigate to:
+
+```
+http://fakebank.thm/bank-transfer/
+```
+
+Follow the instructions on the page to:
+
+* Move **\$2000** from account `2276` → `8881`.
+* Submit the form or request.
+
+---
+
+## 📈 Step 4 — Verify & Document
+
+After a successful transfer:
+
+1. Check your account page for your **new balance**.
+2. Record it here:
+
+```text
+Balance after transfer: __________________
+```
+
+---
+
+## ✅ Interactive Checklist
+
+* [ ] Launch lab environment
+* [ ] Run `gobuster` and find hidden directories
+* [ ] Access `/bank-transfer`
+* [ ] Transfer \$2000 to account 8881
+* [ ] Note your final balance
+
+---
+
+## 🛠️ Tips
+
+* Make sure DNS or `/etc/hosts` points `fakebank.thm` to the correct IP.
+* If you don’t see the transfer form, check for typos in the URL.
+
+---
+
+## 📜 License
+
+This guide is for educational purposes only.
+Author: *Your Name*
+License: MIT
+
+````
+
+---
+
+### How to use it
+
+1. Save this as `README.md`.
+2. Place it in your Git repository.
+3. Commit & push:
+   ```bash
+   git add README.md
+   git commit -m "Add interactive offensive security lab guide"
+   git push origin main
+````
+
+---
+
+Would you like me to create and give you the ready-to-download `README.md` file with this content?
